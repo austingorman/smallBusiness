@@ -74,44 +74,48 @@ const puttemTogether = [
   }
 ]
 
-const container = document.querySelector("#container")
-let fragment = document.createDocumentFragment()
-let card = document.createElement("article")
-let h1 = document.createElement("header")
-let deptSection = document.createElement("section")
-let compSection = document.createElement("section")
-card.className = "employee"
 
 puttemTogether.forEach(function(object) {
   let employeeTogether = object.employeeId
   let departmentTogether = object.departmentId
   let computerTogether = object.computerId
+  let container = document.querySelector("#container")
+  let fragment = document.createDocumentFragment()
+  let card = document.createElement("article")
+  let header = document.createElement("header")
+  let h1 = document.createElement("h1")
+  let deptSection = document.createElement("section")
+  let compSection = document.createElement("section")
   employee.forEach(function(name) {
     let employeeName = name.name
     let theEmployeeId = name.employeeId
-      if(employeeTogether === theEmployeeId) {
-        h1.textContent = `Employee: ${employeeName}`
+    if(employeeTogether === theEmployeeId) {
+      h1.textContent = `Employee: ${employeeName}`
+        card.className = "employee"
+        header.className = "employee__name"
+        card.appendChild(header)
+        header.appendChild(h1)
       }
       departments.forEach(function(department) {
         let departmentName = department.department
         let theDepartmentId = department.departmentId
           if (departmentTogether === theDepartmentId) {
             deptSection.textContent = `Department: ${departmentName}`
+            h1.className = "employee__name"
+            card.appendChild(deptSection)
           }
           computers.forEach(function(computer) {
             let computerName = computer.computer
             let theComputerId = computer.computerId
               if(computerTogether === theComputerId) {
                 compSection.textContent = `Computer: ${computerName}`
+                card.appendChild(compSection)
               }
+            })
           })
-      })
-  })
-  card.appendChild(h1)
-  card.appendChild(deptSection)
-  card.appendChild(compSection)
-  fragment.appendChild(card)
-  container.appendChild(fragment)
+        })
+        fragment.appendChild(card)
+        container.appendChild(fragment)
 })
 
 
