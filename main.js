@@ -101,7 +101,7 @@ puttemTogether.forEach(function(object) {
         let theDepartmentId = department.departmentId
           if (departmentTogether === theDepartmentId) {
             deptSection.textContent = `Department: ${departmentName}`
-            h1.className = "employee__name"
+            deptSection.className = "employee__depatment"
             card.appendChild(deptSection)
           }
           computers.forEach(function(computer) {
@@ -109,6 +109,7 @@ puttemTogether.forEach(function(object) {
             let theComputerId = computer.computerId
               if(computerTogether === theComputerId) {
                 compSection.textContent = `Computer: ${computerName}`
+                compSection.className = "employee__computer"
                 card.appendChild(compSection)
               }
             })
